@@ -1,5 +1,17 @@
 angular.module('starter.services', [])
 
+.factory('loginService', function ($state) {
+  function login (username, password) {
+    if (username === 'goku' && password === '1234') {
+      $state.go('tab.chats')
+    }
+  }
+
+  return {
+    login: login
+  }
+})
+
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 

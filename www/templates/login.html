@@ -1,19 +1,19 @@
-<ion-view title="Login">
+<ion-view title="Login" ng-controller="loginCtrl">
   	<ion-content>
 	    <div class="list list-inset">
 			<label class="item item-input">
 				<i class="icon ion-person placeholder-icon"></i>
-				<input type="text" placeholder="username">
+				<input type="text" placeholder="username" ng-model="user.username">
 			</label>
 		</div>
 	    <div class="list list-inset">
 			<label class="item item-input">
 				<i class="icon ion-locked placeholder-icon"></i>
-				<input type="text" placeholder="password">
+				<input type="password" placeholder="password" ng-model="user.password">
 			</label>
 		</div>
 	    <div class="list list-inset">
-			<button class="button button-block button-positive">
+			<button class="button button-block button-positive" ng-click="login()">
 				Login
 			</button>
 		</div>
