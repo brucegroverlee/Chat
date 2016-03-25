@@ -9730,3 +9730,14 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+.chat .comment {
+  border-bottom: #CECDCD solid 1px;
+  padding: 15px; }
+
+.chat .name {
+  color: #8262F9;
+  font-weight: 500; }
+
+.chat .text {
+  color: #51697A; }
