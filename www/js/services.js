@@ -1,10 +1,33 @@
 angular.module('starter.services', [])
 
-.factory('loginService', function ($state) {
+.constant('config', {
+  loginUrl: 'http://localhost:3000/login'
+})
+
+.factory('loginService', function ($http, $state, config) {
   function login (username, password) {
-    if (username === 'goku' && password === '1234') {
-      $state.go('tab.chats')
-    }
+
+    console.log('username: ' + username)
+    console.log('password: ' + password)
+
+    $http({
+      method: 'POST',
+      url: config.loginUrl,
+      data: {
+        username: username,
+        password: password
+      }
+    })
+    .then(
+      function (response) {
+        console.log('$http: ')
+        console.log(response.data)
+        $state.go('tab.chats')
+      },
+      function (response) {
+        console.log('Error $http')
+      }
+    )
   }
 
   return {
