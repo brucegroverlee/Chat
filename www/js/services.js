@@ -22,7 +22,11 @@ angular.module('starter.services', [])
       function (response) {
         console.log('$http: ')
         console.log(response.data)
-        $state.go('tab.chats')
+        if (response.data.status === 'Ok') {
+          var lsValue = JSON.stringify({username: response.data.username})
+          localStorage.setItem('userChat', lsValue)
+          $state.go('tab.chats')
+        }
       },
       function (response) {
         console.log('Error $http')
