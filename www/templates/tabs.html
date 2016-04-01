@@ -6,15 +6,15 @@ navigation history that also transitions its views in and out.
 <ion-tabs class="tabs-striped tabs-icon-top tabs-top tabs-color-active-positive">
 
   <!-- Chats Tab -->
-  <ion-tab title="Chat" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/tab/chat">
+  <ion-tab title="Chat" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/tab/chat" ng-controller="ChatCtrl">
     <ion-nav-view name="tab-chat"></ion-nav-view>
     <div class="bar bar-footer bar-light">
 
         <div class="item item-input-inset item-chat">
           <label class="item-input-wrapper">
-            <input type="text" placeholder="Message">
+            <input type="text" placeholder="Message" ng-model="comment.text">
           </label>
-          <button class="button button-positive">
+          <button class="button button-positive" ng-click="sendMessage()">
             <i class="icon ion-android-send"></i>
           </button>
         </div>

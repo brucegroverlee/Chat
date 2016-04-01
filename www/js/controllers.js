@@ -14,6 +14,9 @@ angular.module('starter.controllers', [])
 
 .controller('ChatCtrl', function ($scope, $ionicScrollDelegate, socket) {
 
+  var user = localStorage.getItem('userChat')
+  user = JSON.parse(user)
+
   $scope.comment = {
     name: null,
     text: null
@@ -22,8 +25,7 @@ angular.module('starter.controllers', [])
   $scope.comments = []
 
   socket.on('connect', function () {
-    var user = localStorage.getItem('userChat')
-    user = JSON.parse(user)
+
     socket.emit('add user',user.username)
   })
 
@@ -31,4 +33,12 @@ angular.module('starter.controllers', [])
     $scope.comments.push({name: data.username, text: data.message})
     $ionicScrollDelegate.$getByHandle('scroll').scrollBottom()
   })
+
+  $scope.sendMessage = function () {
+    $scope.comments.push({name: $scope.comment.name, text: $scope.comment.text})
+    socket.emit('new message', $scope.comment.text)
+    console.log($scope.comments)
+    $scope.comment.text = null
+  }
+
 })
