@@ -1,10 +1,46 @@
 <ion-view view-title="Chat">
   <ion-content class="chat" delegate-handle="scroll">
-    <div class="comment" ng-repeat=" comment in comments">
-    	<div class="name">{{comment.name}}</div>
-    	<div class="text">{{comment.text}}</div>
+    <div class="comments">
+      <div class="comment" ng-repeat=" comment in comments">
+      	<div class="name">{{comment.name}}</div>
+      	<div class="text">{{comment.text}}</div>
+      </div>
+      <br><br>
+
     </div>
-    <br><br>
+
+
+
   </ion-content>
 
+  <div class="bar bar-footer bar-light">
+
+      <div class="item item-input-inset item-chat">
+        <label class="item-input-wrapper">
+          <input type="text" placeholder="Message" ng-model="comment.text">
+        </label>
+        <button class="button button-positive" ng-click="sendMessage()">
+          <i class="icon ion-android-send"></i>
+        </button>
+      </div>
+
+  </div>
+
+  <!--<ion-footer-bar class="bar-royal">
+  <button class="button button-clear">Left</button>
+  <h2 class="title">Footer (royal)</h1>
+  <button class="button button-clear">Right</button>
+</ion-footer-bar>-->
+
+
+  <!--<div class="chat-footer">
+    <div class="item item-input-inset item-chat">
+      <label class="item-input-wrapper">
+        <input type="text" placeholder="Message" ng-model="comment.text">
+      </label>
+      <button class="button button-positive" ng-click="sendMessage()">
+        <i class="icon ion-android-send"></i>
+      </button>
+    </div>
+  </div>-->
 </ion-view>

@@ -18,7 +18,7 @@ angular.module('starter.controllers', [])
   user = JSON.parse(user)
 
   $scope.comment = {
-    name: null,
+    name: user.username,
     text: null
   }
 

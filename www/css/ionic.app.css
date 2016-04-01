@@ -9731,6 +9731,12 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+.scroll {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh; }
+
 .chat .comment {
   border-bottom: #CECDCD solid 1px;
   padding: 15px; }
@@ -9745,3 +9751,6 @@ a.button {
 .item-chat {
   width: 100%;
   border: 0px !important; }
+
+.chat-footer {
+  height: 80px; }
