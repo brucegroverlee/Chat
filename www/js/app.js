@@ -5,7 +5,12 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', [
+  'ionic',
+  'starter.controllers',
+  'starter.services',
+  'btford.socket-io'
+])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -60,8 +65,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/account',
     views: {
       'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+        templateUrl: 'templates/tab-account.html'
       }
     }
   });

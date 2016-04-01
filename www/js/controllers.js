@@ -12,27 +12,23 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('ChatCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+.controller('ChatCtrl', function ($scope, $ionicScrollDelegate, socket) {
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
+  $scope.comment = {
+    name: null,
+    text: null
+  }
+
+  $scope.comments = []
+
+  socket.on('connect', function () {
+    var user = localStorage.getItem('userChat')
+    user = JSON.parse(user)
+    socket.emit('add user',user.username)
+  })
+
+  socket.on('new message', function (data) {
+    $scope.comments.push({name: data.username, text: data.message})
+    $ionicScrollDelegate.$getByHandle('scroll').scrollBottom()
+  })
 })
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
-
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-});
