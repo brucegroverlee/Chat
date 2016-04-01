@@ -25,7 +25,6 @@ angular.module('starter.controllers', [])
   $scope.comments = []
 
   socket.on('connect', function () {
-
     socket.emit('add user',user.username)
   })
 
@@ -36,8 +35,8 @@ angular.module('starter.controllers', [])
 
   $scope.sendMessage = function () {
     $scope.comments.push({name: $scope.comment.name, text: $scope.comment.text})
+    $ionicScrollDelegate.$getByHandle('scroll').scrollBottom()
     socket.emit('new message', $scope.comment.text)
-    console.log($scope.comments)
     $scope.comment.text = null
   }
 
