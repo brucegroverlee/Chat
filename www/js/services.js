@@ -1,7 +1,8 @@
 angular.module('starter.services', [])
 
 .constant('config', {
-  loginUrl: 'http://localhost:3000/login',
+  //loginUrl: 'http://localhost:3000/login',
+  loginUrl: 'https://arcane-sands-77620.herokuapp.com/login',
   socketUrl: 'http://chat.socket.io'
 })
 
