@@ -6,7 +6,9 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', [
-  'ionic','ionic.service.core',
+  'ngCordova',
+  'ionic',
+  'ionic.service.core',
   'starter.controllers',
   'starter.services',
   'btford.socket-io'
@@ -14,6 +16,8 @@ angular.module('starter', [
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
+
+    $cordovaPlugin.someFunction().then(success, error)
 
     var push = new Ionic.Push({
       "debug": true

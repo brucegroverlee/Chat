@@ -12,7 +12,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('ChatCtrl', function ($scope, $ionicScrollDelegate, socket) {
+.controller('ChatCtrl', function ($scope, $ionicScrollDelegate, $cordovaVibration, socket) {
 
   var user = localStorage.getItem('userChat')
   user = JSON.parse(user)
@@ -31,6 +31,7 @@ angular.module('starter.controllers', [])
   socket.on('new message', function (data) {
     $scope.comments.push({name: data.username, text: data.message})
     $ionicScrollDelegate.$getByHandle('scroll').scrollBottom()
+    $cordovaVibration.vibrate(100)
   })
 
   $scope.sendMessage = function () {
