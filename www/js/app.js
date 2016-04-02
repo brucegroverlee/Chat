@@ -6,7 +6,7 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', [
-  'ionic',
+  'ionic','ionic.service.core',
   'starter.controllers',
   'starter.services',
   'btford.socket-io'
@@ -14,6 +14,15 @@ angular.module('starter', [
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
+
+    var push = new Ionic.Push({
+      "debug": true
+    })
+
+    push.register(function(token) {
+      console.log("Device token:",token.token);
+    })
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
